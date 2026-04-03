@@ -16,8 +16,9 @@ tags:
 
 # EcoRoute RL Agent Environment
 
-EcoRoute RL Agent is a custom OpenEnv environment designed for **sustainable route and transport decision-making**.  
-It simulates an urban commuting scenario where an agent selects a transport mode and receives rewards based on:
+EcoRoute RL Agent is a custom OpenEnv environment designed for **sustainable route and transport decision-making**.
+
+It simulates an urban commuting scenario where an AI agent selects a transport mode and receives rewards based on:
 
 - **Travel time**
 - **CO₂ emissions**
@@ -83,14 +84,16 @@ The goal is to maximize sustainable commuting outcomes.
 
 The action contains:
 
-- `transport_mode` (`str`)  
-  Allowed values:
-  - `"walk"`
-  - `"cycle"`
-  - `"bus"`
-  - `"car"`
+- `transport_mode` (`str`)
 
-Example:
+Allowed values:
+
+- `"walk"`
+- `"cycle"`
+- `"bus"`
+- `"car"`
+
+### Example
 
 ```python
 EcorouteRlAgentAction(transport_mode="cycle")
