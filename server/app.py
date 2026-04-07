@@ -35,6 +35,8 @@ except Exception as e:  # pragma: no cover
         "openenv is required for the web interface. Install dependencies with '\n    uv sync\n'"
     ) from e
 
+from fastapi.middleware.cors import CORSMiddleware
+
 try:
     from models import EcorouteRlAgentAction, EcorouteRlAgentObservation
     from server.ecoroute_rl_agent_environment import EcorouteRlAgentEnvironment
@@ -50,6 +52,15 @@ app = create_app(
     EcorouteRlAgentObservation,
     env_name="ecoroute_rl_agent",
     max_concurrent_envs=1,  # increase this number to allow more concurrent WebSocket sessions
+)
+
+# Allow React frontend to access backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
